@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		button.addEventListener("click", () => {
 			text += letter;
 			display.textContent = text;
-			talk(button.innerText);
+			// talk(button.innerText);
 		});
 		keyboard.appendChild(button);
 	});
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Dugme ENTER
 	enterButton.addEventListener("click", () => {
-		talk(text);
+		talk(text, "Serbian Male");
 		display.textContent = "";
 		text = "";
 	});
@@ -82,31 +82,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //get all lang
 
-var langList = document.getElementById("langList");
-var text =
-	"<table border=1><tr><th>Default<th>Language<th>Local<th>Name<th>URI</tr>";
-// Get voices; add to table markup
-function loadVoices() {
-	var voices = speechSynthesis.getVoices();
-	voices.forEach(function (voice, i) {
-		// Add all details to table
-		text +=
-			"<tr><td>" +
-			voice.default +
-			"<td>" +
-			voice.lang +
-			"<td>" +
-			voice.localService +
-			"<td>" +
-			voice.name +
-			"<td>" +
-			voice.voiceURI;
-	});
-}
-loadVoices();
-langList.innerHTML = text;
-// Chrome loads voices asynchronously.
-window.speechSynthesis.onvoiceschanged = function (e) {
-	loadVoices();
-	langList.innerHTML = text;
-};
+// var langList = document.getElementById("langList");
+// var text =
+// 	"<table border=1><tr><th>Default<th>Language<th>Local<th>Name<th>URI</tr>";
+// // Get voices; add to table markup
+// function loadVoices() {
+// 	var voices = speechSynthesis.getVoices();
+// 	voices.forEach(function (voice, i) {
+// 		// Add all details to table
+// 		text +=
+// 			"<tr><td>" +
+// 			voice.default +
+// 			"<td>" +
+// 			voice.lang +
+// 			"<td>" +
+// 			voice.localService +
+// 			"<td>" +
+// 			voice.name +
+// 			"<td>" +
+// 			voice.voiceURI;
+// 	});
+// }
+// loadVoices();
+// langList.innerHTML = text;
+// // Chrome loads voices asynchronously.
+// window.speechSynthesis.onvoiceschanged = function (e) {
+// 	loadVoices();
+// 	langList.innerHTML = text;
+// };
