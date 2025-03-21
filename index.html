@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Učenje Ćirilice</title>
+		<title>Učenje reči</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
@@ -12,10 +12,15 @@
 			<div class="keyboard" id="keyboard"></div>
 		</div>
 		<div class="controls">
-			<button id="space" class="control-button">SPACE</button>
-			<button id="backspace" class="control-button">BACKSPACE</button>
-			<button id="enter" class="control-button">ENTER</button>
+			<button id="space" class="control-button">RAZMAK</button>
+			<button id="backspace" class="control-button">OBRIŠI</button>
+			<button id="enter" class="control-button">PROČITAJ</button>
 		</div>
+		<script src="https://code.responsivevoice.org/responsivevoice.js?key=TNIkWCZp"></script>
+		<script>
+			responsiveVoice.speak("Preimućstvo", "Serbian Male");
+		</script>
+		<div id="langList"></div>
 		<script src="script.js"></script>
 	</body>
 </html>

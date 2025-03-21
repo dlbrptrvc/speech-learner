@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		button.addEventListener("click", () => {
 			text += letter;
 			display.textContent = text;
+			responsiveVoice.speak(text, "Serbian Male");
+			// talk(button.innerText);
 		});
 		keyboard.appendChild(button);
 	});
@@ -66,8 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	enterButton.addEventListener("click", () => {
+		responsiveVoice.speak(text, "Serbian Male");
 		display.textContent = "";
-		talk(text);
+		// talk(text);
 		text = "";
 	});
 
@@ -178,3 +181,36 @@ async function textToSpeech() {
 		console.error("Error:", error);
 	}
 }
+
+//try this
+
+//get all lang
+
+var langList = document.getElementById("langList");
+var text =
+	"<table border=1><tr><th>Default<th>Language<th>Local<th>Name<th>URI</tr>";
+// Get voices; add to table markup
+function loadVoices() {
+	var voices = speechSynthesis.getVoices();
+	voices.forEach(function (voice, i) {
+		// Add all details to table
+		text +=
+			"<tr><td>" +
+			voice.default +
+			"<td>" +
+			voice.lang +
+			"<td>" +
+			voice.localService +
+			"<td>" +
+			voice.name +
+			"<td>" +
+			voice.voiceURI;
+	});
+}
+loadVoices();
+langList.innerHTML = text;
+// Chrome loads voices asynchronously.
+window.speechSynthesis.onvoiceschanged = function (e) {
+	loadVoices();
+	langList.innerHTML = text;
+};
